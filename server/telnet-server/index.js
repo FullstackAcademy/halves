@@ -1,6 +1,7 @@
 var _ = require('lodash');
 var net = require('net');
-var server = net.createServer().listen(8124, () => console.log('Telnet server turned on.'));
+const PORT = 8124
+var server = net.createServer().listen(PORT, () => console.log(`Telnet server on port ${PORT}`));
 var game = require('../game');
 
 var lineBreak = '\r\n';
@@ -13,10 +14,13 @@ server.on('connection', function (socket) {
 
     socket.write(`${lineBreak}Welcome to the game!${lineBreak}Awaiting next question . . .`);
 
-    socket.on('end', () => {
+    const kickPlayer = () => {
         connectionPool = _.without(connectionPool, socket);
         game.playerLeft();
-    });
+    }
+
+    socket.on('end', kickPlayer);
+    socket.on('error', kickPlayer)
 
 });
 
