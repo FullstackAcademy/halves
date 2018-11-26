@@ -6,7 +6,9 @@ var socketio = require('socket.io');
 var netServer = require('./telnet-server');
 var game = require('./game');
 
-server.listen(1237, () => console.log('Server started.'));
+const PORT = 1237
+
+server.listen(PORT, () => console.log(`Server started: http://localhost:${PORT}`));
 server.on('request', app);
 
 var io = socketio(server);
