@@ -5,7 +5,7 @@ module.exports = game;
 var questionPairs = [
     [`What might you name your first child?`, `What is the name of your pet (or your favorite pet name)?`],
     [`Who is your biggest role model?`, `Who is the last person you talked to?`],
-    [`Who is your favorite superhero?`, `Give Joe a nickname!`]
+    [`Who is your favorite superhero?`, `Give your instructor a nickname!`]
 ];
 
 var questionPairIndex = 0;
